@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Aleatorio</title>
+</head>
+<body>
+    <script>
+
+        const numeroAleatorio = (maximo) => {
+            
+            const numero = Math.round(Math.random() * maximo);
+            return numero;
+        };
+
+      
+        let resul = numeroAleatorio(99999);
+        console.log(resul); 
+    </script>
+</body>
+</html>

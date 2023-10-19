@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class persona {
+            constructor(nombre, apellidos, poblacion, edad, estudios, carnetDeConducir) {
+                if (typeof edad !== 'number' || typeof estudios !== 'string') {
+                    alert('Los tipos de datos no son válidos.');
+                    return;
+                }
+                this.nombre = nombre;
+                this.apellidos = apellidos;
+                this.poblacion = poblacion;
+                this._edad = edad;
+                this._estudios = estudios;
+                this.carnetDeConducir = carnetDeConducir;
+            }
+
+            get edad() {
+                return this._edad;
+            }
+
+            set edad(edad) {
+                if (typeof edad === 'number') {
+                    this._edad = edad;
+                } else {
+                    alert('La edad debe ser un número.');
+                }
+            }
+
+            get estudios() {
+                return this._estudios;
+            }
+
+            set estudios(estudios) {
+                if (typeof estudios === 'string') {
+                    this._estudios = estudios;
+                } else {
+                    alert('Los estudios deben ser una cadena de texto.');
+                }
+            }
+        }
+
+        // Crear un array de objetos Persona
+        let personas = [
+            new Persona('Juan', 'Pérez', 'Madrid', 30, 'Licenciatura', true),
+            new Persona('María', 'Gómez', 'Barcelona', 25, 'Grado', false),
+            new Persona('Pedro', 'López', 'Valencia', 35, 'Master', true)
+        ];
+
+        // Ordenar el array de personas por nombre
+        personas.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+        // Crear un mapa con DNI como clave y objeto Persona como valor
+        let mapaPersonas = new Map();
+        mapaPersonas.set('12345678A', new Persona('Ana', 'Martínez', 'Sevilla', 28, 'Grado', false));
+        mapaPersonas.set('87654321B', new Persona('Carlos', 'Rodríguez', 'Bilbao', 40, 'Doctorado', true));
+        mapaPersonas.set('56789012C', new Persona('Elena', 'Fernández', 'Málaga', 22, 'Grado', false));
+
+        // Ordenar el mapa por clave
+        let mapaOrdenadoPorClave = new Map([...mapaPersonas.entries()].sort());
+
+        // Ordenar el mapa por edad (requiere un comparador personalizado)
+        let mapaOrdenadoPorEdad = new Map([...mapaPersonas.entries()].sort((a, b) => a[1].edad - b[1].edad));
+
+        // Crear una tabla HTML para mostrar los datos de personas
+        let tabla = document.createElement('table');
+        tabla.border = '1';
+
+        // Encabezados de la tabla
+        let encabezados = ['Nombre', 'Apellidos', 'Población', 'Edad', 'Estudios', 'Carnet de Conducir'];
+        let encabezadoRow = tabla.insertRow();
+        for (let encabezado of encabezados) {
+            let cell = encabezadoRow.insertCell();
+            cell.textContent = encabezado;
+        }
+
+        // Agregar datos de personas a la tabla
+        for (let persona of personas) {
+            let row = tabla.insertRow();
+            let cell = row.insertCell();
+            cell.textContent = persona.nombre;
+            cell = row.insertCell();
+            cell.textContent = persona.apellidos;
+            cell = row.insertCell();
+            cell.textContent = persona.poblacion;
+            cell = row.insertCell();
+            cell.textContent = persona.edad;
+            cell = row.insertCell();
+            cell.textContent = persona.estudios;
+            cell = row.insertCell();
+            cell.textContent = persona.carnetDeConducir;
+        }
+
+        // Agregar la tabla al cuerpo del documento
+        document.body.appendChild(tabla);
+
+        // Muestra el mapa ordenado por edad en la consola
+        console.log(mapaOrdenadoPorEdad);
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class TablaPersonasMap {
+  constructor(personasMap) {
+    this.personasMap = personasMap;
+  }
+
+  ordenarPorClave() {
+    this.personasMap = new Map([...this.personasMap.entries()].sort());
+  }
+
+  mostrarEnPagina() {
+    const tablaMap = document.createElement('table');
+    tablaMap.innerHTML = `
+      <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Población</th>
+        <th>Edad</th>
+        <th>Estudios</th>
+        <th>Carnet de Conducir</th>
+      </tr>
+    `;
+
+    this.personasMap.forEach((persona, dni) => {
+      tablaMap.innerHTML += `
+        <tr>
+          <td>${dni}</td>
+          <td>${persona.nombre}</td>
+          <td>${persona.apellidos}</td>
+          <td>${persona.poblacion}</td>
+          <td>${persona.edad}</td>
+          <td>${persona.estudios}</td>
+          <td>${persona.carnetDeConducir ? 'Sí' : 'No'}</td>
+        </tr>
+      `;
+    });
+
+    document.body.appendChild(tablaMap);
+  }
+}
+
+// Crear un map de personas
+const personasMap = new Map();
+personasMap.set('12345678A', new Persona( 'Juan', 'Pérez', 'Madrid', 30, 'Licenciatura', true));
+personasMap.set('87654321B', new Persona('Ana', 'González', 'Barcelona', 25, 'Grado', false));
+personasMap.set('98765432C', new Persona('Carlos', 'López', 'Valencia', 40, 'Master', true));
+
+// Crear una instancia de TablaPersonasMap
+const tablaMap = new TablaPersonasMap(personasMap);
+
+// Ordenar y mostrar las personas en la página web
+
+
+    </script>
+    
+</body>
+</html>

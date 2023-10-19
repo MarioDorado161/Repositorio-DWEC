@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        function ImprimirDatos(){
+            document.write("<br>Marca: "+this.marca);
+            document.write("<br>Modelo: "+this.modelo);
+            document.write("<br>Año: "+this.anno);
+        }
+
+        function coche(marca_in, modelo_in, anno_in) {
+            this.marca=marca_in;
+            this.modelo=modelo_in;
+            this.anno=anno_in;
+            this.imprimeDatos=ImprimirDatos;
+        }
+        let coches= new Array(4);
+        coches[0]= new coche("Ferrari", "Scaglietta", "2010");
+        coches[1]= new coche("BMW", "Z4", "1998");
+        coches[2]= new coche("Seat", "Toledo", "2010");
+        coches[3]= new coche("Fiat", "Punto", "2006");
+
+        for(i=0;i<coches.length;i++){
+            document.write("<b> Marca </b>" + coches[i].marca + "- <b> Modelo </b>" 
+            + coches[i].modelo + "- <b> Año </b>" + coches[i].anno);
+        }
+
+        let nuevo_coche=new coche("Nissan","GT-R Nismo","2014");
+        nuevo_coche.imprimeDatos();
+
+            // Concatenar Arrays //
+        const lenguajes= new Array(` CSS `, ` JAVASCRIPT `, ` HTML `, ` PHP `);
+        const Frameworks= new Array(` React `, ` Vue `, ` Angular `);
+        const tecnologias = lenguajes.concat(Frameworks);
+        let miArray1= lenguajes.join(",");
+
+        document.write("<br>",tecnologias);
+
+        /* EJERCICIO : DECLARA UNA FUNCION FLECHA QUE ACEPTE 
+           COMO ARGUMENTO UN ARRAY DE NUMEROS Y DEVUELVA LA SUMA 
+           DE TODOS ELLOS */
+
+
+        const sumaNumeros = (numeros) => {
+       let contador = 0;
+       numeros.forEach(elemento =>{
+        contador += elemento;
+       })
+        return contador;
+        };
+
+        const numeros = [1, 2, 3, 4, 5];
+        const resultado = sumaNumeros(numeros);
+        document.write("<br>",resultado);
+
+    </script>
+    
+</body>
+</html>

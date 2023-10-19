@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let equipos_A=new Array("Real Madrid", "Var-celona", "Valencia" );
+        let equipos_B=new Array("Bilbao" , "Atletico de Madrid", "Sevilla");
+
+        let liga=equipos_A.concat(equipos_B)
+        console.log(liga);
+        document.write(liga.join("<br>"));
+
+        //Dar la vuelta al array
+        equipos_A.reverse();
+        document.write(equipos_A);
+
+        //Eliminar el primer valor del array
+        liga.shift();
+        document.write(liga);
+
+        //Eliminar el ultimo elemento del array
+        let cima = liga.pop();
+        document.write(liga);
+        
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coches</title>
+</head>
+<body>
+    <script>
+        // Definición de la clase Coche
+        class Coche {
+            constructor(marca, modelo, precio, anoMatriculacion, url) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.precio = precio;
+                this.anoMatriculacion = anoMatriculacion;
+                this.url = url;
+            }
+        }
+
+        // Crear 5 instancias de objetos Coche
+        const coche1 = new Coche("Toyota", "Corolla", 25000, 2022, "IMG/corolla.png");
+        const coche2 = new Coche("Honda", "Civic", 28000, 2022, "img/civic.png");
+        const coche3 = new Coche("Ford", "Mustang", 45000, 2021, "img/mustang.png");
+        const coche4 = new Coche("Chevrolet", "Camaro", 48000, 2021, "");
+        const coche5 = new Coche("Nissan", "GT-R, R-34", 60000, 2021, "");
+
+        // Crear un array de coches
+        const listaCoches = [coche1, coche2, coche3, coche4, coche5];
+
+        // Mostrar los coches en la consola
+        console.log ("Lista de Coches:") ;
+        for (const coche of listaCoches) {
+            document.write("--");
+           document.write(`Marca: ${coche.marca} <br>`);
+           document.write(`Modelo: ${coche.modelo}<br>`);
+           document.write(`Precio: $${coche.precio}<br>`);
+           document.write(`Año de Matriculación: ${coche.anoMatriculacion}<br>`);
+           document.write(`URL de la foto: ${coche.url}<br>`);
+          
+        }
+        
+    </script>
+</body>
+</html>
+

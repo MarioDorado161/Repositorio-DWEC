@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coches</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Coches</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Año de Matriculación</th>
+                    <th>URL de la foto</th>
+                </tr>
+            </thead>
+            <tbody id="cochesTableBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        class Coche {
+            constructor(marca, modelo, precio, anoMatriculacion, url) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.precio = precio;
+                this.anoMatriculacion = anoMatriculacion;
+                this.url = url;
+            }
+        }
+
+        const coche1 = new Coche("Toyota", "Corolla", 25000, 2022, "IMG/corolla.png");
+        const coche2 = new Coche("Honda", "Civic", 28000, 2022, "img/coche2.jpg");
+        const coche3 = new Coche("Ford", "Mustang", 45000, 2021, "img/mustang.png");
+        const coche4 = new Coche("Chevrolet", "Camaro", 48000, 2021, "img/coche4.jpg");
+        const coche5 = new Coche("Nissan", "GTR, R-34", 27000, 2022, "img/coche5.jpg");
+
+        const listaCoches = [coche1, coche2, coche3, coche4, coche5];
+
+        function pintaCoches(coches) {
+            const cochesTableBody = document.getElementById('cochesTableBody');
+
+            for (const coche of coches) {
+                const cocheRow = document.createElement('tr');
+
+                cocheRow.innerHTML = `
+                    <td>${coche.marca}</td>
+                    <td>${coche.modelo}</td>
+                    <td>$${coche.precio}</td>
+                    <td>${coche.anoMatriculacion}</td>
+                    <td>${coche.url}</td>
+                `;
+
+                cochesTableBody.appendChild(cocheRow);
+            }
+        }
+
+        // Llama a la función pintaCoches con la lista de coches
+        pintaCoches(listaCoches);
+    </script>
+</body>
+</html>
