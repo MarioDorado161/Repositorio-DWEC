@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="03-estilo.css">
+</head>
+<style>
+        .contenedor {
+    font: 1em sans-serif;
+    max-width: 600px;
+    margin: 0px auto;
+
+}
+
+.form-group {
+    margin-top: 1em;
+}
+
+.form-group>input,
+.form-group>textarea,
+.form-group>select {
+    display: block;
+    width: 100%;
+}
+
+.form-group>input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+}
+
+p.error-feedback {
+    color: red;
+    font-size: small;
+    margin: 0;
+}
+
+.error>input {
+    border-color: red;
+}
+
+input:invalid {
+    border-color: red;
+}
+</style>
+
+<body>
+    <div class="contenedor">
+        <form action="./enviar.php" id="formulario">
+            <div class="form-group">
+                <label for="email">E-mail::</label>
+                <input type="text" name="email" id="email" autofocus>
+                <p class="error-feedback"></p>
+            </div>
+            <div class="form-group">
+                <label for="cp">Código Postal:</label>
+                <input type="text" name="cp" id="cp" autofocus>
+                <p class="error-feedback"></p>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="btn-submit">Enviar</button>
+                <button type="reset">Restablecer</button>
+            </div>
+
+        </form>
+
+        <script src="07.-ValidarER.js"></script>
+    </div>
+</body>
+
+</html>

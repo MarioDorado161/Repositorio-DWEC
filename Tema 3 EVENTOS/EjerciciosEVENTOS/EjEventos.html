@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Propagación de eventos</title>
+</head>
+<body>
+    
+   <!-- Yo tengo una pagina web donde tengo  3 checkbox y puedo tener los tres 
+    activos, lo que se trata de hacer es aplicando eventos  que si hay 3 marcados 
+    que solo quede marcado uno   --> 
+
+    <input type="checkbox" id="checkbox1"> Checkbox 1
+    <input type="checkbox" id="checkbox2"> Checkbox 2
+    <input type="checkbox" id="checkbox3"> Checkbox 3
+
+   <script>
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                // Si el checkbox actual está marcado, desmarca los otros
+                if (checkbox.checked) {
+                    checkboxes.forEach(otherCheckbox => {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                    }
+                    });
+                }
+                });
+            });
+            
+    </script>
+
+      
+
+</body>
+</html>

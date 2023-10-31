@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="radio" id="radio1" name="radioGroup" class="custom-radio"> Radio 1
+    <input type="radio" id="radio2" name="radioGroup" class="custom-radio"> Radio 2
+    <input type="radio" id="radio3" name="radioGroup" class="custom-radio"> Radio 3
+    
+    <!-- Ejemplo con radi buttons-->
+
+    <script>
+        const radioButtons = document.querySelectorAll('.custom-radio');
+      
+        radioButtons.forEach(radioButton => {
+          radioButton.addEventListener('change', () => {
+            // No es necesario escribir código adicional para desactivar los otros radio buttons
+            // Ya que el atributo 'name' agrupa los radio buttons y garantiza que solo uno esté seleccionado.
+          });
+        });
+      </script>
+      
+</body>
+</html>
