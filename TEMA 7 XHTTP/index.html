@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="07.-estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="contenedor">
+    <h1>Ajax con XMLHTTPRequest</h1>
+    <div class="contenido">
+
+    </div>
+    <button id="btn">GET</button>
+</div>
+
+<script>
+    const contenido = document.querySelector(".contenido");
+    const btn = document.getElementById("btn");
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "./user.json");
+
+    xhr.addEventListener("load", function(){
+        console.log(this.responseText);
+        console.log(this.status);
+        if(this.status ===200) {
+            contenido.classList.add("success")
+            contenido.innerHTML = xhr.response.nombre;
+        }else {
+            contenido.classList.add("error")
+        }
+     //   const user = JSON.parse(this.responseText); // Analizar el JSON
+     //   contenido.innerHTML = user.nombre;
+     //   console.log(user);
+    });
+    xhr.addEventListener("error", function(){
+        contenido.classList.add("error");
+    })
+
+    btn.addEventListener("click", function(){
+        xhr.open("GET" , "https://noexiste.dom/user.");
+        xhr.responseType = "json";
+        xhr.send(); // Enviar la solicitud cuando se hace clic en el botón
+
+    });
+
+    function insertDutputResponse(response){
+        let decodeResponse=JSON.parse(response);
+        contenido.innerHTML="";
+        let activity=document.createElement("h4");
+        activity.append(activity);
+
+        let enlace=document.createElement("h4");
+        enlace.append(decodeResponse.link);
+        contenido.append(enlace);
+
+    }
+
+    xhr.addEventListener("readystatechange", function () {
+            switch(this.readyState) {
+                case XMLHttpRequest.OPENED:
+                    console.log("OPENED");
+                    break;
+                case XMLHttpRequest.HEADERS_RECEIVED:
+                    console.log("HEADERS");
+                    break;
+                case XMLHttpRequest.LOADING: 
+                    console.log("LOADING");
+                    break;
+                case XMLHttpRequest.DONE: 
+                    console.log("DONE");
+                    loaded();
+                    break;
+            }
+        });
+
+    
+        xhr.addEventListener("error", function () {
+       
+        });
+</script>
+
+</body>
+</html>

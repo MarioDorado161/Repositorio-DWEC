@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "nombre" : "Mario",
+    "contrasena" : "12345",
+    "activo" : true
+}
